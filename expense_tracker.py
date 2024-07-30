@@ -2,7 +2,6 @@ from transactions import add_transaction, view_transactions, edit_transaction, d
 from categories import add_category, view_categories
 from summaries import generate_summary
 from visualizations import create_pie_chart
-from database import create_schema
 
 
 def main_menu():
@@ -21,10 +20,10 @@ def main_menu():
 
         if choice == '1':
             amount = float(input("Enter amount: "))
-            category_id = int(input("Enter category ID: "))
+            category_name = input("Enter category name: ")
             date = input("Enter date (YYYY-MM-DD): ")
             description = input("Enter description: ")
-            add_transaction(amount, category_id, date, description)
+            add_transaction(amount, category_name, date, description)
         elif choice == '2':
             transactions = view_transactions()
             for t in transactions:
@@ -32,10 +31,10 @@ def main_menu():
         elif choice == '3':
             transaction_id = int(input("Enter transaction ID: "))
             amount = float(input("Enter new amount: "))
-            category_id = int(input("Enter new category ID: "))
+            category_name = input("Enter new category name: ")
             date = input("Enter new date (YYYY-MM-DD): ")
             description = input("Enter new description: ")
-            edit_transaction(transaction_id, amount, category_id, date, description)
+            edit_transaction(transaction_id, amount, category_name, date, description)
         elif choice == '4':
             transaction_id = int(input("Enter transaction ID: "))
             delete_transaction(transaction_id)
@@ -63,5 +62,4 @@ def main_menu():
 
 
 if __name__ == "__main__":
-    create_schema()
     main_menu()
